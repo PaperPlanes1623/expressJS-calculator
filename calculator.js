@@ -23,7 +23,11 @@ var multiply = num1 * num2;
 var divide = num1 / num2;
 
 //create if statements for each button click to add multiply etc...
-res.send("Answer: " + add);
+if(req="add") {
+  res.send("Answer: " + add);
+}
+
+
 });
 
 app.get("/bmi", function(req, res) {
@@ -34,7 +38,7 @@ app.post("/bmi", function(req, res) {
 
   var height = parseFloat(req.body.height);
   var weight = parseFloat(req.body.weight);
-
+//fix bmi calculation. possibly in metric or off a decimal?
   var bmi = weight/ (height * height);
 
   res.send("Your BMI is " + bmi);

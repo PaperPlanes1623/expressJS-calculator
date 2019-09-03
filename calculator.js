@@ -5,31 +5,39 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/root.html");
+})
+
+app.get("/math", function(req, res) {
+  res.sendFile(__dirname + "/math.html");
 });
 
-app.post("/", function(req, res) {
+app.post("/math", function(req, res) {
 
 var num1 = Number(req.body.n1);
 var num2 = Number(req.body.n2);
 
-var result = num1 + num2;
+var add = num1 + num2;
+var subtract = num1 - num2;
+var multiply = num1 * num2;
+var divide = num1 / num2;
 
-  res.send("The Result of the calculation is " + result);
+//create if statements for each button click to add multiply etc...
+res.send("Answer: " + add);
 });
 
-app.get("/bmicalculator", function(req, res) {
+app.get("/bmi", function(req, res) {
   res.sendFile(__dirname + "/bmiCalculator.html");
 });
 
-app.post("/bmicalculator", function(req, res) {
+app.post("/bmi", function(req, res) {
 
   var height = parseFloat(req.body.height);
   var weight = parseFloat(req.body.weight);
 
   var bmi = weight/ (height * height);
 
-  res.send("Your BMi is " + bmi);
+  res.send("Your BMI is " + bmi);
 })
 
 app.listen(3000, function() {
